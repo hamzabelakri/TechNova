@@ -4,7 +4,7 @@ import styles from "./toast.module.css";
 const Toast = () => {
   return (
   
-<div>sent</div>
+<div >Some text some message..</div>
 
 
   )

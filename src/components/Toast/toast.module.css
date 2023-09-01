@@ -1,94 +1,44 @@
-.toast {
-  position: absolute;
-  top: 25px;
-  right: 30px;
-  border-radius: 12px;
-  background: #fff;
-  padding: 20px 35px 20px 25px;
-  box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transform: translateX(calc(100% + 30px));
-  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
-  }
-  
-  .toast.active {
-    transform: translateX(0%);
+.snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: #333; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
 }
 
-.toast .toast-content {
-    display: flex;
-    align-items: center;
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+.snackbar.show {
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
-.toast-content .check {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 35px;
-    min-width: 35px;
-    background-color: #2770ff;
-    color: #fff;
-    font-size: 20px;
-    border-radius: 50%;
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
 }
 
-.toast-content .message {
-    display: flex;
-    flex-direction: column;
-    margin: 0 20px;
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
 }
 
-.message .text {
-  font-size: 16px;
-  font-weight: 400;
-  color: #666666;
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
 }
 
-.message .text.text-1 {
-  font-weight: 600;
-  color: #333;
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
 }
-
-.toast .close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  padding: 5px;
-  cursor: pointer;
-  opacity: 0.7;
-}
-
-.toast .close:hover {
-  opacity: 1;
-}
-
-.toast .progress {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 3px;
-  width: 100%;
-
-}
-
-.toast .progress:before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  background-color: #2770ff;
-}
-
-.progress.active:before {
-  animation: progress 5s linear forwards;
-}
-
-@keyframes progress {
-  100% {
-      right: 100%;
-  }
-}
-
-

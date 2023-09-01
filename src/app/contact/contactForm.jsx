@@ -1,7 +1,7 @@
 "use client";
 
 import Toast from "@/components/Toast/toast";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./page.module.css";
 
 const ContactForm = () => {
@@ -20,21 +20,29 @@ const ContactForm = () => {
           message,
         }),
       });
-      if (res.ok) {
-        setShowToast(true); 
-        console.log(showToast)
-      }
+      setShowToast(true);
       e.target.reset();
     } catch (err) {
       console.log(err);
     }
   };
 
+  useEffect(() => {
+    if (showToast) {
+      setTimeout(function () {
+        setShowToast(false);
+      }, 4000);
+    }
+  }, [showToast]);
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-  
       <input type="text" placeholder="name" required className={styles.input} />
-      <input type="text" placeholder="email" required className={styles.input} />
+      <input
+        type="text"
+        placeholder="email"
+        required
+        className={styles.input}
+      />
       <textarea
         className={styles.textArea}
         placeholder="message"
