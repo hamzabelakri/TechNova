@@ -1,34 +1,39 @@
 .container {
-    height: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .logo {
-    font-weight: bold;
-    font-size: 22px;
-  }
-  
-  .links {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  .logout {
-    padding: 10px;
-    border: none;
-    background-color: #53c28b;
-    color: white;
-    cursor: pointer;
-    border-radius: 3px;
-   }
- 
-   .logout:hover{
-     background-color: #0f7542;
- 
-   }
-  
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  
+.title:hover {
+  color: #0f7542;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.link:hover {
+  color: #0f7542;
+}
+
+
+.logout {
+  padding: 10px;
+  border: none;
+  background-color: #53c28b;
+  color: white;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.logout:hover {
+  background-color: #0f7542;
+}
