@@ -1,4 +1,15 @@
-.container {
+.topContainer {
+  height: 50px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content:center
+}
+
+
+
+
+.buttomContainer {
     height: 50px;
     font-size: 14px;
     display: flex;
