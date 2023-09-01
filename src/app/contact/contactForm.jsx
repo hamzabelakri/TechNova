@@ -1,9 +1,11 @@
 "use client";
-import Button from "@/components/Button/Button";
+
+import Toast from "@/components/Toast/toast";
 import React, { useState } from "react";
 import styles from "./page.module.css";
 
 const ContactForm = () => {
+  const [showToast, setShowToast] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const name = e.target[0].value;
@@ -18,6 +20,10 @@ const ContactForm = () => {
           message,
         }),
       });
+      if (res.ok) {
+        setShowToast(true); 
+        console.log(showToast)
+      }
       e.target.reset();
     } catch (err) {
       console.log(err);
@@ -26,15 +32,18 @@ const ContactForm = () => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <input type="text" placeholder="name" className={styles.input} />
-      <input type="text" placeholder="email" className={styles.input} />
+  
+      <input type="text" placeholder="name" required className={styles.input} />
+      <input type="text" placeholder="email" required className={styles.input} />
       <textarea
         className={styles.textArea}
         placeholder="message"
         cols="30"
         rows="8"
+        required
       ></textarea>
       <button className={styles.button}>Send</button>
+      {showToast && <Toast />}
     </form>
   );
 };

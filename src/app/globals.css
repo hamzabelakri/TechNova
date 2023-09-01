@@ -27,6 +27,11 @@ a{
   justify-content: space-between;
 }
 
+.children {
+margin-top: 20px;
+margin-bottom: 40px;
+}
+
 .theme{
   transition: 1s all ease;
 }

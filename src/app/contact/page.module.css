@@ -21,7 +21,7 @@
 
 .image {
   object-fit: contain;
-  /* animation: move 3s infinite ease alternate; */
+  animation: move 3s infinite ease alternate;
 }
 
 @keyframes move {
@@ -62,7 +62,8 @@
   font-weight: bold;
 }
 
-.button:hover{
+.button:hover {
   background-color: #0f7542;
-
 }
+
+
