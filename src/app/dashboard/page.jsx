@@ -4,6 +4,7 @@ import useSWR from "swr";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Loader from "@/components/Loader/Loader";
 
 const Dashboard = () => {
 
@@ -70,7 +71,7 @@ const Dashboard = () => {
       <div className={styles.container}>
         <div className={styles.posts}>
           {isLoading
-            ? "loading"
+            ? <Loader/>
             : data?.map((post) => (
                 <div className={styles.post} key={post._id}>
                   <div className={styles.imgContainer}>
