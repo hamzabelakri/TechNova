@@ -6,9 +6,8 @@ import Image from "next/image";
 async function getData() {
  
   try {
-    const res = await fetch("http://localhost:3000/api/posts", {
-    cache: "no-store",
-  });
+    const res = await fetch("http://localhost:3000/api/posts", { next: { revalidate: 0 }, }); 
+ 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
