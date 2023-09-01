@@ -28,7 +28,7 @@ const Contact = () => {
             className={styles.textArea}
             placeholder="message"
             cols="30"
-            rows="10"
+            rows="8"
           ></textarea>
           <Button url="#" text="Send"/>
         </form>
