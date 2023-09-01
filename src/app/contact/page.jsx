@@ -1,12 +1,14 @@
 import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
-import Button from "@/components/Button/Button";
+import ContactForm from "./contactForm";
 
 export const metadata = {
-  title: "Lama Dev Contact Information",
+  title: "TechNova Contact Information",
   description: "This is Contact Page",
 };
+
+
 
 const Contact = () => {
   return (
@@ -21,17 +23,7 @@ const Contact = () => {
             className={styles.image}
           />
         </div>
-        <form className={styles.form}>
-          <input type="text" placeholder="name" className={styles.input} />
-          <input type="text" placeholder="email" className={styles.input} />
-          <textarea
-            className={styles.textArea}
-            placeholder="message"
-            cols="30"
-            rows="8"
-          ></textarea>
-          <Button url="#" text="Send"/>
-        </form>
+       <ContactForm/>
       </div>
     </div>
   );

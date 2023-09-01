@@ -2,9 +2,7 @@ import { NextResponse } from "next/server";
 import connect from "@/utils/db";
 import Contact from "@/models/Contact";
 
-export const Get = async (request) => {
-
-  
+export const GET = async (request) => {
     try {
       await connect();
   
