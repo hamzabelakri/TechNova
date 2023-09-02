@@ -12,9 +12,8 @@ export const metadata = {
 
 async function getData() {
 
-  const host = headers().get("host");
-  const protocal = process?.env.NODE_ENV==="development"?"http":"https"
-  const res = await fetch(`${protocal}://${host}/api/posts`, { cache: "no-store" });
+  const res = await fetch(`${process.env.URL}/api/posts`, 
+  { cache: "no-store" });
 
 
 if (!res.ok) {
