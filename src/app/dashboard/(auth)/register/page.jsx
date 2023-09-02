@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const [error, setError] = useState(null);
@@ -28,6 +30,16 @@ const Register = () => {
         }),
       });
       res.status === 201 && router.push("/dashboard");
+      toast.success('Welcome Aboard!', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
     } catch (err) {
       setError(err);
       console.log(err);
@@ -36,6 +48,7 @@ const Register = () => {
 
   return (
     <div className={styles.container}>
+      <ToastContainer />
       <h1 className={styles.title}>Create an Account</h1>
       <h2 className={styles.subtitle}>Please sign up to see the dashboard.</h2>
       <form onSubmit={handleSubmit} className={styles.form}>

@@ -69,7 +69,7 @@ const Dashboard = () => {
      const res= await fetch(`/api/posts/${id}`, {
         method: "DELETE",
       });
-      toast.success('Welcome Aboard!', {
+      toast.success('Post Deleted!', {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
