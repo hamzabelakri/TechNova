@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
 import Image from "next/image";
+import { headers } from "next/headers";
+
 export const metadata = {
   title: "Blog-TechNova",
   description: "This is the blog Page",
@@ -9,15 +11,17 @@ export const metadata = {
 
 
 async function getData() {
-  const res = await fetch("http://localhost:3000/api/posts", {
-    cache: "no-store",
-  });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
+  const host = headers().get("host");
+  const protocal = process?.env.NODE_ENV==="development"?"http":"https"
+  const res = await fetch(`${protocal}://${host}/api/posts`, { cache: "no-store" });
 
-  return res.json();
+
+if (!res.ok) {
+  throw new Error("Failed to fetch data");
+}
+
+return res.json();
 }
 
 const Blog = async () => {
