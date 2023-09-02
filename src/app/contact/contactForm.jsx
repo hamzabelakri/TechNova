@@ -1,8 +1,10 @@
 "use client";
 
-import Toast from "@/components/Toast/toast";
+import Toast from "@/components/Toast/Toast";
 import React, { useEffect, useState } from "react";
 import styles from "./page.module.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ContactForm = () => {
   const [showToast, setShowToast] = useState(false);
@@ -20,20 +22,22 @@ const ContactForm = () => {
           message,
         }),
       });
-      setShowToast(true);
+      toast.success("Message Sent!", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+
       e.target.reset();
     } catch (err) {
       console.log(err);
     }
   };
-
-  useEffect(() => {
-    if (showToast) {
-      setTimeout(function () {
-        setShowToast(false);
-      }, 4000);
-    }
-  }, [showToast]);
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <input type="text" placeholder="name" required className={styles.input} />
@@ -51,7 +55,7 @@ const ContactForm = () => {
         required
       ></textarea>
       <button className={styles.button}>Send</button>
-      {showToast && <Toast />}
+      <ToastContainer />
     </form>
   );
 };

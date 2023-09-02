@@ -4,6 +4,9 @@ import styles from "./page.module.css";
 import { getProviders, signIn, useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const Login = ({ url }) => {
   const session = useSession();
@@ -34,10 +37,21 @@ const Login = ({ url }) => {
       email,
       password,
     });
+    toast.success('Welcome Back!', {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      });
   };
 
   return (
     <div className={styles.container}>
+       <ToastContainer />
       <h1 className={styles.title}>{success ? success : "Welcome Back"}</h1>
       <h2 className={styles.subtitle}>Please sign in to see the dashboard.</h2>
 

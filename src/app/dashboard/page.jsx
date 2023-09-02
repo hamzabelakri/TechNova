@@ -5,6 +5,8 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Loader from "@/components/Loader/Loader";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Dashboard = () => {
 
@@ -45,6 +47,16 @@ const Dashboard = () => {
           username: session.data.user.name,
         }),
       });
+      toast.success('Post Added!', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
       mutate();
       e.target.reset()
     } catch (err) {
@@ -57,10 +69,18 @@ const Dashboard = () => {
      const res= await fetch(`/api/posts/${id}`, {
         method: "DELETE",
       });
+      toast.success('Welcome Aboard!', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
       mutate();
-      if (res.ok) {
-        console.log("deleted")
-      }
+     
     } catch (err) {
       console.log(err);
     }
@@ -69,6 +89,7 @@ const Dashboard = () => {
   if (session.status === "authenticated") {
     return (
       <div className={styles.container}>
+         <ToastContainer />
         <div className={styles.posts}>
           {isLoading
             ? <Loader/>
@@ -99,6 +120,7 @@ const Dashboard = () => {
             rows="10"
           ></textarea>
           <button className={styles.button}>Send</button>
+          <ToastContainer />
         </form>
       </div>
     );
