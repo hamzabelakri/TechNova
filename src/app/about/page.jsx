@@ -2,6 +2,10 @@ import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Button from "@/components/Button/Button";
+export const metadata = {
+  title: "About-TechNova",
+  description: "This is the about page",
+};
 
 const About = () => {
   return (

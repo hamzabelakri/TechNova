@@ -9,11 +9,10 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Dashboard = () => {
-
   const session = useSession();
 
   const router = useRouter();
-  
+
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
   const { data, mutate, error, isLoading } = useSWR(
@@ -21,7 +20,7 @@ const Dashboard = () => {
     fetcher
   );
 
-/*    if (session.status === "loading") {
+  /*    if (session.status === "loading") {
     return <p>Loading from session</p>;
   }  */
 
@@ -47,7 +46,7 @@ const Dashboard = () => {
           username: session.data.user.name,
         }),
       });
-      toast.success('Post Added!', {
+      toast.success("Post Added!", {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -56,9 +55,9 @@ const Dashboard = () => {
         draggable: true,
         progress: undefined,
         theme: "dark",
-        });
+      });
       mutate();
-      e.target.reset()
+      e.target.reset();
     } catch (err) {
       console.log(err);
     }
@@ -66,10 +65,10 @@ const Dashboard = () => {
 
   const handleDelete = async (id) => {
     try {
-     const res= await fetch(`/api/posts/${id}`, {
+      const res = await fetch(`/api/posts/${id}`, {
         method: "DELETE",
       });
-      toast.success('Post Deleted!', {
+      toast.success("Post Deleted!", {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -78,9 +77,8 @@ const Dashboard = () => {
         draggable: true,
         progress: undefined,
         theme: "dark",
-        });
+      });
       mutate();
-     
     } catch (err) {
       console.log(err);
     }
@@ -89,24 +87,26 @@ const Dashboard = () => {
   if (session.status === "authenticated") {
     return (
       <div className={styles.container}>
-         <ToastContainer />
+        <ToastContainer />
         <div className={styles.posts}>
-          {isLoading
-            ? <Loader/>
-            : data?.map((post) => (
-                <div className={styles.post} key={post._id}>
-                  <div className={styles.imgContainer}>
-                    <Image src={post.img} alt="" width={200} height={100} />
-                  </div>
-                  <h2 className={styles.postTitle}>{post.title}</h2>
-                  <span
-                    className={styles.delete}
-                    onClick={() => handleDelete(post._id)}
-                  >
-                    X
-                  </span>
+          {isLoading ? (
+            <Loader />
+          ) : (
+            data?.map((post) => (
+              <div className={styles.post} key={post._id}>
+                <div className={styles.imgContainer}>
+                  <Image src={post.img} alt="" width={200} height={100} />
                 </div>
-              ))}
+                <h2 className={styles.postTitle}>{post.title}</h2>
+                <span
+                  className={styles.delete}
+                  onClick={() => handleDelete(post._id)}
+                >
+                  X
+                </span>
+              </div>
+            ))
+          )}
         </div>
         <form className={styles.new} onSubmit={handleSubmit}>
           <h1>Add New Post</h1>
