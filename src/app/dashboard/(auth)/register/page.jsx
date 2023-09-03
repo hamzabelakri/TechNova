@@ -29,7 +29,7 @@ const Register = () => {
           password,
         }),
       });
-      if(res.ok){router.push("/dashboard");
+      if(res.ok){router.push("/dashboard/login");
       toast.success('Welcome Aboard!', {
         position: "top-center",
         autoClose: 3000,

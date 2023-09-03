@@ -1,4 +1,4 @@
-/* import React from "react";
+import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -64,4 +64,4 @@ const BlogPost = async ({ params }) => {
   );
 };
 
-export default BlogPost; */
+export default BlogPost;
