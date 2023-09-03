@@ -11,22 +11,6 @@ export const metadata = {
 
 
 async function getData() {
-  const host = headers().get("host");
-  const protocal = process?.env.NODE_ENV==="development"?"http":"https"
-  const res = await fetch(`${protocal}://${host}/api/posts`, 
-  { cache: "no-store" });
-
-
-if (!res.ok) {
-  throw new Error("Failed to fetch data");
-}
-
-return res.json();
-}
-
-
-
-/* async function getData() {
 
   const res = await fetch(`${process.env.URL}/api/posts`, 
   { cache: "no-store" });
@@ -37,7 +21,7 @@ if (!res.ok) {
 }
 
 return res.json();
-} */
+}
 
 const Blog = async () => {
   const data = await getData();
