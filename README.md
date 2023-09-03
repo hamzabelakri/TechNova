@@ -15,6 +15,7 @@ A comprehensive Full Stack application built using Next.js. This project showcas
 **Pure CSS Styling**: Craft beautiful and responsive user interfaces using pure CSS, ensuring a sleek and customized design.
 
 
+
 ## Deployment
 
 This project is deployed on Vercel: https://tech-nova-world.vercel.app/
