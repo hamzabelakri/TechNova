@@ -29,7 +29,7 @@ const Register = () => {
           password,
         }),
       });
-      res.status === 201 && router.push("/dashboard");
+      if(res.ok){router.push("/dashboard");
       toast.success('Welcome Aboard!', {
         position: "top-center",
         autoClose: 3000,
@@ -40,6 +40,7 @@ const Register = () => {
         progress: undefined,
         theme: "dark",
         });
+      }
     } catch (err) {
       setError(err);
       console.log(err);

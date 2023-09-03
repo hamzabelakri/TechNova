@@ -3,15 +3,21 @@
   align-items: center;
   gap: 50px;
   margin-bottom: 50px;
+  cursor: auto;
+
 }
 
 .image{
   object-fit: cover;
+  cursor: pointer;
+
 }
 
 
 .title{
   margin-bottom: 10px;
+  cursor: pointer;
+
 }
 
 .desc{
