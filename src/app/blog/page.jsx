@@ -12,7 +12,7 @@ export const metadata = {
 
 async function getData() {
 
-  const res = await fetch(`${process.env.URL}/api/posts`, 
+  const res = await fetch("https://tech-nova-world.vercel.app/api/posts", 
   { cache: "no-store" });
 
 
