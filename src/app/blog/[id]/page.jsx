@@ -9,7 +9,7 @@ async function getData(id) {
    
     return notFound();
   }
-  const res = await fetch(`http://localhost:3000/api/posts/${id}`, {
+  const res = await fetch(`/api/posts/${id}`, {
     cache: "no-store",
   });
   
@@ -23,7 +23,7 @@ async function getData(id) {
 
 
 export async function generateMetadata({ params }) {
-
+  console.log(params)
   const post = await getData(params.id)
   return {
     title: post.title,
